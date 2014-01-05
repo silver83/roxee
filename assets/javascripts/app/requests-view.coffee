@@ -15,7 +15,7 @@ define ['jquery', 'knockout', 'app/engine' ], ($, ko, engine) ->
       $el.on 'mouseleave', 'td.url', @onLeave
 
     onSelect: (e) =>
-      @requestsModel.setSelected $(e.target).attr('id')
+      @requestsModel.onRequestSelected ko.dataFor(e.target)
 
     onHover: (e) =>
       @hover.show()

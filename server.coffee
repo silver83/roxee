@@ -19,6 +19,8 @@ exports.startProxy = (proxyPort, io)->
 
       io.sockets.emit 'proxy.request',
         id: id
+        headers: req.headers
+        body: req.body
         url: req.url #can't send entire request object
 
       buffer = httpProxy.buffer req
@@ -96,7 +98,7 @@ exports.startServer = (config, callback) ->
     console.error(e)
     console.log(e.stack)
 
-  callback(server)
+  callback(server, io)
 
   # callback(s)
 

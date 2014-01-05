@@ -6,8 +6,10 @@ html
     link(rel='stylesheet', href='/stylesheets/vendor/foundation/foundation.css' + cachebust)
     link(rel='stylesheet', href='/stylesheets/vendor/jquery.layout/layout-default-latest.css' + cachebust)
 
+    script(src='http://localhost:3001/socket.io/socket.io.js')  # served automagically by server side socket.io component
+
     //- if reload
-    //-   script(src='/javascripts/reload-client.js')
+    //-   script(src='/javascripts/reload-client.js')       # can't include this - sockio not on main port, as expected by reload-client
 
     if optimize
       script(src='/javascripts/main-built.js')

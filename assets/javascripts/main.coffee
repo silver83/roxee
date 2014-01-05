@@ -9,7 +9,6 @@ require
     foundation: 'vendor/foundation/foundation'
     modernizr: 'vendor/modernizr/modernizr'
     layout: 'vendor/jquery.layout/jquery.layout-latest'
-    socketio: 'http://localhost:3001/socket.io/socket.io'  # served automagically by server side socket.io component
 
   shim:
     'backbone':
@@ -22,13 +21,13 @@ require
     '*':
       'css': 'vendor/require-css/css'
 
-  , ['jquery', 'jquery_ui', 'socketio']
+  , ['jquery', 'jquery_ui']
   , ($)->
     require [ 'app/main-view', 'app/engine']
       , (MainView, engine) ->
 
         $(()->
-          engine.connect()
+          engine.connect(3001)
 
           view = new MainView()
           view.render $('body')

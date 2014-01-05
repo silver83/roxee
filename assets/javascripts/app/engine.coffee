@@ -6,7 +6,6 @@ define [ '_', 'backbone' ], (_, backbone) ->
   # in that case - no 'response.new' event will be emitted.
   # in other words : response.new will only be emitted for responsed which arrived _after_ we saw the request
   class Engine
-    _port = 3001
     _requests = []
     _log =
       requests: true
@@ -15,13 +14,17 @@ define [ '_', 'backbone' ], (_, backbone) ->
     constructor: () ->
       _.extend(this, backbone.Events)
 
-    connect: () =>
-      socket = io.connect ':3001/'
+    connect: (port) =>
+      socket = io.connect ":#{port}/"
 
       socket.on 'proxy.request',  @onRequest
       socket.on 'proxy.response', @onResponse
       socket.on 'connect_failed', () -> alert 'connect failed'
       socket.on 'error',          () -> alert 'error'
+
+      # livereload... faking what reload-client should be doing since the connect there is hardcoded
+      socket.on 'page',       () -> location.reload()
+      socket.on 'reconnect',  () -> location.reload()
 
     parseRequest: (req) =>
       parser = document.createElement('a'); # free url parsing trick
