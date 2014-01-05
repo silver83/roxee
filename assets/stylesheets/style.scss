@@ -103,6 +103,10 @@ section[role=main] {
         background:transparent;
         margin-bottom: 0px;
 
+        tr.selected {
+            background-color: #dfddef !important
+        }
+
         td, th {
             -webkit-touch-callout: none;
             -webkit-user-select: none;

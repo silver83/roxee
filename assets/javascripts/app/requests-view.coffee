@@ -15,7 +15,9 @@ define ['jquery', 'knockout', 'app/engine' ], ($, ko, engine) ->
       $el.on 'mouseleave', 'td.url', @onLeave
 
     onSelect: (e) =>
+      @lastSelected?.removeClass 'selected'
       @requestsModel.onRequestSelected ko.dataFor(e.target)
+      @lastSelected = $(e.target).closest('tr').addClass 'selected'
 
     onHover: (e) =>
       @hover.show()

@@ -36,10 +36,11 @@ exports.startProxy = (proxyPort, io)->
   ).listen(proxyPort);
 
   s.proxy.on 'end', (req, res) ->
+    console.log [ 'response', res ]
     try
       io.sockets.emit 'proxy.response',
         id: req.__id
-        headers: res.headers
+        headers: res._headers
         body: res.body
         statusCode: res.statusCode
     catch e

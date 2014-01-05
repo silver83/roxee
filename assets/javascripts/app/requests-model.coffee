@@ -3,6 +3,7 @@ define [ 'knockout', 'backbone', 'app/engine' ], (ko, backbone, engine) ->
   class RequestsModel
     constructor: () ->
       @currentRequest = ko.observable(null)
+      @currentResponse = ko.observable(null)
       @requests = ko.observableArray([])
       @requestsById = {}
 
@@ -13,10 +14,15 @@ define [ 'knockout', 'backbone', 'app/engine' ], (ko, backbone, engine) ->
     # when a request is clicked - set the current request
     onRequestSelected: (request) =>
       @currentRequest request
+      @currentResponse request.response
 
     onResponse: (response) =>
       request = @requestsById[response.id]
       request.status response.statusCode
+      request.response = response
+
+      if (request.id == @currentRequest()?.id)
+        @currentResponse(response)
 
     onRequest: (request) =>
       request.rid = "r#{request.id}"

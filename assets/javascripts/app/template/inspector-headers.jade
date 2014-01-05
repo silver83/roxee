@@ -1,6 +1,7 @@
 #headers-request.headers-center
   div(data-bind='with: currentRequest')
-    div(data-bind='text: ')
+    div(data-bind='html: prettyPrint(headers).outerHTML')
 
 #headers-response.headers-south
-  | response headers
+  div(data-bind='with: currentResponse || { headers:null }')
+    div(data-bind='html: headers && prettyPrint(headers).outerHTML')
