@@ -1,0 +1,174 @@
+@import "inspector";
+
+@mixin table-text {
+    padding: 0 5px;
+    font-size: 0.7rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+}
+
+.title-area .name img {
+    height: 45px;
+    display: inline-block;
+}
+
+// table tr.even, table tr.alt, table tr:nth-of-type(even) {
+//  background: transparent !important;
+// }
+
+html, body, section[role=main], div.row, div.row .columns {
+    height:100%;
+}
+
+// foundation rows don't take 100% by default...
+div.row {
+    max-width: 100%;
+}
+
+.title-area .name h1 a {
+    display: inline-block !important;
+}
+
+.top-bar {
+    background-color: #444444;
+
+    .right {
+        width: 500px;
+        color: white;
+        text-align: right;
+        padding-right: 30px;
+
+        .button {
+            top:0px;
+        }
+    }
+}
+
+.hovering-row {
+    @include table-text;
+    box-sizing: border-box;
+    border: 1px solid gray;
+    z-index: 200;
+    background: white;
+    pointer-events:none;
+    position: absolute;
+    min-width: 500px;
+
+    span {
+        margin-left:10px;
+    }
+
+    img {
+        height: 2rem;
+    }
+}
+
+section[role=main] {
+    .ui-layout-west {
+        // overflow-x:hidden;
+        background:
+            /* Shadow covers */
+            linear-gradient(white 30%, rgba(255,255,255,0)),
+            linear-gradient(rgba(255,255,255,0), white 70%) 0 100%,
+
+            /* Shadows */
+            radial-gradient(50% 0, farthest-side, rgba(0,0,0,.5), rgba(0,0,0,0)),
+            radial-gradient(50% 100%,farthest-side, rgba(0,0,0,.5), rgba(0,0,0,0)) 0 100%;
+        background:
+            /* Shadow covers */
+            linear-gradient(white 30%, rgba(255,255,255,0)),
+            linear-gradient(rgba(255,255,255,0), white 70%) 0 100%,
+
+            /* Shadows */
+            radial-gradient(farthest-side at 50% 0, rgba(0,0,0,.5), rgba(0,0,0,0)),
+            radial-gradient(farthest-side at 50% 100%, rgba(0,0,0,.5), rgba(0,0,0,0)) 0 100%;
+        background-repeat: no-repeat;
+        background-color: white;
+        background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
+
+        /* Opera doesn't support this in the shorthand */
+        background-attachment: local, local, scroll, scroll;
+    }
+
+    .ui-layout-pane {
+        padding: 0;
+    }
+
+    table {
+        width:100%;
+        min-width:200px;
+        border:0px;
+        border-collapse:collapse;
+        background:transparent;
+        margin-bottom: 0px;
+
+        td, th {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        th, td {
+            max-width: 100px;
+        }
+
+        th {
+            border: 1px solid #cccccc;
+            line-height: 1rem;
+        }
+
+        td {
+            @include table-text;
+            position:relative;
+        }
+
+        td.url {
+            max-width: 200px;
+        }
+
+        tr.even, tr.alt, tr:nth-of-type(even) {
+            background: rgba(0,0,0,0.02);
+        }
+
+        td:first-child {
+            font-size: 0.4rem;
+        }
+
+        // * {
+        //     @extend .fadeInDown;
+        //     -webkit-backface-visibility: hidden;
+        //     -moz-backface-visibility: hidden;
+        //     -ms-backface-visibility: hidden;
+        //     -o-backface-visibility: hidden;
+        //     backface-visibility: hidden;
+        //     -webkit-animation-duration: 1s;
+        //     -webkit-animation-delay: .2s;
+        //     -webkit-animation-timing-function: ease;
+        //     -webkit-animation-fill-mode: both;
+        // }
+    }
+}
+
+
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+}
+
+@-webkit-keyframes fadeInDownBig {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-2000px);
+    transform: translateY(-2000px);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}

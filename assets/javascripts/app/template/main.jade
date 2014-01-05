@@ -1,0 +1,29 @@
+.fixed
+  nav.top-bar(data-topbar)
+    ul.title-area
+      li.name
+        h1
+          img(src='images/house.md.svg')
+          a(href='#') Roxee
+    .right
+      a#set-proxy.button.radius(href="#") Set Proxy
+
+section(role='main').ui-layout-container
+  div.ui-layout-west
+    table.requests
+      thead
+        tr
+          th #
+          th result
+          th host
+          th url
+        tr
+      tbody(data-bind="foreach: requests")
+        tr(data-bind="attr: { id: rid }")
+          td.rid(data-bind="text: '#' + id")
+          td.status(data-bind="text: status")
+          td.host(data-bind="text: host")
+          td.url(data-bind="text: pathname + search")
+
+  div.ui-layout-center
+    include inspector

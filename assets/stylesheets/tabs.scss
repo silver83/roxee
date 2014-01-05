@@ -1,0 +1,29 @@
+.tabs {
+    .tab.selected {
+        display: block
+    }
+
+    .tab {
+        display: none;
+    }
+
+    table {
+        margin-bottom: 0px;
+    }
+
+    th.selected {
+        background-color: #DFDDEF
+    }
+
+    th:hover {
+        background-color: #DFEDEF
+    }
+}
+
+#inspector.tabs {
+    th {
+        border: 1px solid #bbbbbb;
+        font-size: 0.7rem;
+        line-height: 0.7;
+    }
+}

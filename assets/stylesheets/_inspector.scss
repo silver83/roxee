@@ -1,0 +1,12 @@
+#main, #inspector {
+	height: 100%;
+}
+
+#main .tab[id^=main-] {
+	height: calc(100% - 2.188rem); /* 35px saved for header*/
+}
+
+#inspector .tab[id^=inspector-] {
+	height: calc(100% - 1.625rem); /* 35px saved for header*/
+}
+

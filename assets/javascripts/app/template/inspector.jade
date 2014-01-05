@@ -1,0 +1,34 @@
+#main.tabs
+  table.header
+    thead
+      tr
+        th(data-href="main-inspector") inspector
+        th(data-href="main-builder") request builder
+        th(data-href="main-autoresp") autoresponder
+        th(data-href="main-filters") filters
+      tr
+  #main-inspector.tab
+
+    // start inspector
+    #inspector.tabs
+      table.header
+        thead
+          tr
+            th(data-href="inspector-headers") headers
+            th(data-href="inspector-builder") raw
+            th(data-href="inspector-json") json
+          tr
+      #inspector-headers.tab
+        include inspector-headers
+      #inspector-builder.tab
+        | builder
+      #inspector-json.tab
+        | json
+
+
+    // end inspector
+
+
+  #main-builder.tab
+  #main-autoresp.tab
+  #main-filters.tab
